@@ -131,18 +131,19 @@ public:
 };
 
 
-int main()
+int main( int argc, char *argv[] )
 {
     /// Seed random number generator with time so it changes at every run
-    srand(time(NULL));
+    //srand(time(NULL));
 
-    uint populationSize = 1000;
-    Population e(populationSize);
+    uint populationSize =       argc < 2 ? 1000 : stoi(argv[1]);
+    uint numberOfTests =        argc < 3 ? 1000 : stoi(argv[2]);
+    uint numberOfSelections =   argc < 4 ? 1000 : stoi(argv[3]);
 
-    uint numberOfSelections = 10000;
-    uint numberOfTests = 1000;
-    vector<double> testsCorrelation = e.performEteroSimilarityTests(numberOfTests, numberOfSelections);
-    cout << "AVG: " << mean(testsCorrelation) << endl;
-    cout << "STD: " << stdev(testsCorrelation) << endl;
+    Population population(populationSize);
+
+    vector<double> testsCorrelation = population.performEteroSimilarityTests(numberOfTests, numberOfSelections);
+    cout << "Correlation mean  : " << mean(testsCorrelation) << endl;
+    cout << "Correlation stdev : " << stdev(testsCorrelation) << endl;
 }
 
