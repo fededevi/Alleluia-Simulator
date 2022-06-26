@@ -1,11 +1,11 @@
 #include "pearson.h"
+
 #include <array>
 #include <chrono>
 #include <iostream>
 #include <random>
 
 using namespace std;
-
 
 class Allele {
 public:
