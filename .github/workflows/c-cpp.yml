@@ -16,4 +16,4 @@ jobs:
     - name: make
       run: make
     - name: execute
-      run: alleluia 1000 1000 500
+      run: ./alleluia 1000 1000 500
